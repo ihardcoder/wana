@@ -1,0 +1,23 @@
+{
+  "name": "waterloo_analytics",
+  "version": "0.0.0",
+  "description": "waterloo analytics ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihardcoder/Waterloo-analytics.git"
+  },
+  "keywords": [
+    "analytics",
+    "javascript"
+  ],
+  "author": "zhoujunpeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihardcoder/Waterloo-analytics/issues"
+  },
+  "homepage": "https://github.com/ihardcoder/Waterloo-analytics#readme"
+}
