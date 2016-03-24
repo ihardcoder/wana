@@ -47,7 +47,7 @@ fsp.readdir(__dirname + '/../src/modules/').then(function(files) {
     fsp.writeFileSync(syncIndex, syncContent.join('\n'));
     fsp.writeFileSync(asyncIndex, asyncContent.join('\n'));
 }).then(function() {
-    webpack(webpackConf).run(function(err, data) {
-        console.log(err);
+    webpack(webpackConf).run(function(err, stats) {
+        console.log(stats.toJson());
     });
 });
