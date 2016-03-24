@@ -15,11 +15,11 @@ fsp.readdir(__dirname + '/../src/modules/').then(function(files) {
         }
     });
     return modulesMap;
-}).then(function(modulesMap) {
+// }).then(function(modulesMap) {
     // 将map数据写入modules.mapping.js文件
-    console.log("generating modules mapping file...");
-    fsp.writeFile(__dirname + '/../conf/modules.mapping.js', JSON.stringify(modulesMap));
-    return modulesMap;
+    // console.log("generating modules mapping file...");
+    // fsp.writeFile(__dirname + '/../conf/modules.mapping.js', JSON.stringify(modulesMap));
+    // return modulesMap;
 }).then(function(modulesMap) {
     console.log("generating main files...");
     const syncModules = modConf.sync;
@@ -48,6 +48,6 @@ fsp.readdir(__dirname + '/../src/modules/').then(function(files) {
     fsp.writeFileSync(asyncIndex, asyncContent.join('\n'));
 }).then(function() {
     webpack(webpackConf).run(function(err, stats) {
-        console.log(stats.toJson());
+        console.log('builded successed');
     });
 });
