@@ -1,38 +1,37 @@
-import { exTypes } from "../../core/constants";
+import { exTypes } from "../../core/constants.js";
 
-// 组件name
-export const mod_name = 'wa_timing';
-// 组件执行时机，
-export const mod_exType = exTypes.onload;
-// 组件执行统计的function
-export const mod_fn = function() {
-    const _this = this,
-        _win = window,
-        _performance = _win.performance || _win.webkitPerformance || _win.msPerformance || _win.mozPerformance;
-    // 只统计实现了performance API的平台
-    if (!_performance) {
-        return false;
+export const mod_timing = {
+    name: 'timing',
+    exType: 'async',
+    fn: function() {
+        const _this = this,
+            _win = window,
+            _performance = _win.performance || _win.webkitPerformance || _win.msPerformance || _win.mozPerformance;
+        // 只统计实现了performance API的平台
+        if (!_performance) {
+            return false;
+        }
+        const _timing = _performance.timing;
+        let times = {};
+        // 白屏时间
+        times.firstPaint = getFirstPaint(_win, _timing);
+        // DNS查询耗时
+        times.domainLookup = _timing.domainLookupEnd - _timing.domainLookupStart;
+        // TCP建立连接耗时
+        times.tcpConnect = _timing.connectEnd - _timing.connectStart;
+        // html文档请求/响应总耗时
+        times.htmlRequest = _timing.responseEnd - _timing.requestStart;
+        // html文档请求耗时
+        times.htmlPureRequest = _timing.requestEnd - _timing.requestStart;
+        // html文档响应传输耗时
+        times.htmlPureResponse = _timing.responseEnd - _timing.responseStart;
+        // domready时间点
+        times.domready = _timing.domContentLoadedEventEnd - _timing.fetchStart;
+        // onload时间点
+        times.onload = _timing.loadEventEnd - _timing.fetchStart;
+
+        return times;
     }
-    const _timing = _performance.timing;
-    let times = {};
-    // 白屏时间
-    times.firstPaint = getFirstPaint(_win, _timing);
-    // DNS查询耗时
-    times.domainLookup = _timing.domainLookupEnd - _timing.domainLookupStart;
-    // TCP建立连接耗时
-    times.tcpConnect = _timing.connectEnd - _timing.connectStart;
-    // html文档请求/响应总耗时
-    times.htmlRequest = _timing.responseEnd - timing.requestStart;
-    // html文档请求耗时
-    times.htmlPureRequest = _timing.requestEnd - timing.requestStart;
-    // html文档响应传输耗时
-    times.htmlPureResponse = _timing.responseEnd - timing.responseStart;
-    // domready时间点
-    times.domready = _timing.domContentLoadedEventEnd - _timing.fetchStart;
-    // onload时间点
-    times.onload = _timing.loadEventEnd - _timing.fetchStart;
-
-    return times;
 };
 
 /**

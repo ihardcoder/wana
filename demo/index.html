@@ -1,0 +1,17 @@
+<!Doctype html>
+<html>
+<head>
+    <script src='../release/wa.js'></script>    
+</head>
+<body>
+    hello wa!
+    <script>
+        window.onload = function(){
+            var url = '../release/waAsync.js';
+            var script = document.createElement('script');
+            document.head.appendChild(script);
+            script.src = url;
+        }
+    </script>
+</body>
+</html>
