@@ -9,7 +9,7 @@
 
 * 下载源码：
 ```
-git clone git@github.com:johnagan/clean-webpack-plugin.git
+git clone git@github.com:ihardcoder/Waterloo-analytics.git
 ```
 * 安装依赖
 ```
