@@ -19,3 +19,4 @@ npm install
 ```
 npm run build
 ```
+> 也可以使用对应的cli工具[Waterloo-analytics-cli](https://github.com/ihardcoder/Waterloo-analytics-cli)。
