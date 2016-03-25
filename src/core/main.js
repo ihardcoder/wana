@@ -1,5 +1,3 @@
-import { exTypes } from "./constants.js";
-
 export const WA = {
     modules: [],
     data: {},

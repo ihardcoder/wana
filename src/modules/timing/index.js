@@ -1,8 +1,5 @@
-import { exTypes } from "../../core/constants.js";
-
 export const mod_timing = {
     name: 'timing',
-    exType: 'async',
     fn: function() {
         const _this = this,
             _win = window,
