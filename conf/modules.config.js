@@ -1,4 +1,4 @@
 module.exports = {
-    "sync": ["timing"],
-    "async": ["jsexception"]
+    "async": ["timing"],
+    "sync": ["jsexception"]
 }

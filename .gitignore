@@ -1,4 +1,5 @@
 .DS_Store
+.tmp
 release
 node_modules
 conf/modules.mapping.js
