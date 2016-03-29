@@ -34,7 +34,7 @@ fsp.mkdirs(tmpdir).then(function(){
 
     syncContent.push('//main.js with Synchronous modules all in one');
     syncContent.push('import { wana } from \'../src/core/index.js\';');
-    asyncContent.push('import { wana } from \'../src/core/index.js\';');
+    syncContent.push('wana(\'create\');');
     asyncContent.push('//main.js with Asynchronous modules all in one');
 
     for (mod in modulesMap) {
@@ -46,8 +46,7 @@ fsp.mkdirs(tmpdir).then(function(){
             asyncContent.push('wana(\'use\',{name:' + mod + '.name,fn:' + mod + '.fn' + '});');
         }
     }
-    syncContent.push('wana(\'create\');');
-    syncContent.push('export wana;');
+    syncContent.push('export { wana };');
     fsp.writeFileSync(syncIndex, syncContent.join('\n'));
     fsp.writeFileSync(asyncIndex, asyncContent.join('\n'));
 }).then(function(){

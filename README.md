@@ -1,5 +1,3 @@
-# Waterloo-analytics
-
 ### 前端数据统计，包括以下方面的数据统计：
 1. 性能数据：通过performance API获取；
 2. js异常数据（todo）；
@@ -21,4 +19,3 @@ npm install
 ```
 npm run build
 ```
-> 也可以使用对应的cli工具[Waterloo-analytics-cli](https://github.com/ihardcoder/Waterloo-analytics-cli)。

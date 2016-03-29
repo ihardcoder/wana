@@ -1,14 +1,15 @@
-export class Tracker = {
+export class Tracker {
     constructor(){
         this.data = {};
     }
-    set({key,value}){
+    set(options){
+        let {key,value} = options;
         this.data[key] = value;
     }
     get(key){
         return key ? this.data[key] : this.data;
     }
-    send(data){
+    send(){
 
     }
-};
+}
