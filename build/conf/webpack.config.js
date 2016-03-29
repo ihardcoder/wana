@@ -16,8 +16,8 @@ module.exports = {
     }]
   },
   entry: {
-    wa: path.join(__dirname, '/../../.tmp/index.sync.js'),
-    waAsync: path.join(__dirname, '/../../.tmp/index.async.js')
+    wana: path.join(__dirname, '/../../.tmp/index.sync.js'),
+    wanaAsync: path.join(__dirname, '/../../.tmp/index.async.js')
   },
   output: {
     path: releaseDir,

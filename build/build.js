@@ -9,8 +9,8 @@ const tmpdir = path.join(__dirname, '/../.tmp');
 const releasedir = path.join(__dirname,'/../release');
 
 fsp.mkdirs(tmpdir).then(function(){
-    fsp.emptydir(tmpdir);
-}).then(function(){
+//     fsp.emptydir(tmpdir);
+// }).then(function(){
     return fsp.readdir(path.join(__dirname, '/../src/modules/'));
 }).then(function(files) {
     // 分析module目录并生成map数据
@@ -33,19 +33,21 @@ fsp.mkdirs(tmpdir).then(function(){
         asyncContent = [];
 
     syncContent.push('//main.js with Synchronous modules all in one');
-    syncContent.push('import {WA} from \'../src/core/main.js\';');
-    syncContent.push('export const wa = WA.create();');
+    syncContent.push('import { wana } from \'../src/core/index.js\';');
+    asyncContent.push('import { wana } from \'../src/core/index.js\';');
     asyncContent.push('//main.js with Asynchronous modules all in one');
 
     for (mod in modulesMap) {
         if (syncModules.indexOf(mod) !== -1) {
             syncContent.push('import { mod_' + mod + ' as ' + mod + '} from \'' + modulesMap[mod] + '\';');
-            syncContent.push('wa.use(' + mod + '.name,' + mod + '.fn' + ');');
+            syncContent.push('wana(\'use\',{name:' + mod + '.name,fn:' + mod + '.fn' + '});');
         } else {
             asyncContent.push('import { mod_' + mod + ' as ' + mod + ' } from \'' + modulesMap[mod] + '\';');
-            asyncContent.push('wa.use(' + mod + '.name,' + mod + '.fn' + ');');
+            asyncContent.push('wana(\'use\',{name:' + mod + '.name,fn:' + mod + '.fn' + '});');
         }
     }
+    syncContent.push('wana(\'create\');');
+    syncContent.push('export wana;');
     fsp.writeFileSync(syncIndex, syncContent.join('\n'));
     fsp.writeFileSync(asyncIndex, asyncContent.join('\n'));
 }).then(function(){
